@@ -138,7 +138,7 @@ module Mongoid
           node.ancestor_ids.inject(arranged_nodes) do |insertion_point, ancestor_id|
             insertion_point.each do |parent, children|
               # Change the insertion point to children if node is a descendant of this parent
-              insertion_point = children if ancestor_id == parent.id.to_s
+              insertion_point = children if ancestor_id.to_s == parent.id.to_s
             end
             insertion_point
           end[node] = ActiveSupport::OrderedHash.new
